@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.instagramclone.fragments.ProfileFragment;
 
 import java.util.List;
 
@@ -63,6 +64,20 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             if(post.getImage() != null){
                 Glide.with(context).load(post.getImage().getUrl()).into(ivImage);
             }
+        }
+
+        /* Within the RecyclerView.Adapter class */
+
+        // Clean all elements of the recycler
+        public void clear() {
+            posts.clear();
+            notifyDataSetChanged();
+        }
+
+        // Add a list of items -- change to type used
+        public void addAll(List<Post> list) {
+            posts.addAll(list);
+            notifyDataSetChanged();
         }
     }
 }
